@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- 继承父模块 -->
+    <parent>
+        <groupId>pers.dreamer07.spring</groupId>
+        <artifactId>Parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <!-- 指定从当前文件出发到父工程pom.xml文件的相对路径 -->
+        <relativePath>../Parent/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>Code</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>pers.dreamer07.spring</groupId>
+            <artifactId>Moudule-util</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!--junit 单元测试-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--使用 xml 的方式完成注入其他类型的属性-->
+
+    <!--注入空值null-->
+    <!--
+    <bean id="book" class="pers.dreamer07.spring5.code.Book">
+        <property name="name">
+            <null/>
+        </property>
+        <property name="author">
+            <null/>
+        </property>
+        &lt;!&ndash;构造函数注入同理&ndash;&gt;
+    </bean>
+    -->
+
+    <!--注入特殊值-->
+    <bean id="book" class="pers.dreamer07.spring5.code.Book">
+        <property name="name">
+            <value><![CDATA["OHHH"]]></value>
+        </property>
+        <property name="author">
+            <!--使用<![CDATA[属性值]]>-->
+            <value><![CDATA[<>对对对<>]]></value>
+        </property>
+    </bean>
+
+    <!--注入外部bean-->
+    <bean id="userService" class="pers.dreamer07.spring5.service.UserService">
+        <property name="userDAO" ref="userDAO"></property>
+    </bean>
+    <!--外部bean-->
+    <bean id="userDAO" class="pers.dreamer07.spring5.dao.UserDAO"></bean>
+
+    <!--注入内部bean-->
+    <!--
+    <bean id="emp" class="pers.dreamer07.spring5.bean.Emp">
+        <property name="name" value="Jack"></property>
+        <property name="gender" value="男"></property>
+        <property name="dept">
+            &lt;!&ndash;在内部配置对应的bean对象&ndash;&gt;
+            <bean id="dept" class="pers.dreamer07.spring5.bean.Dept">
+                <property name="dname" value="IT"></property>
+            </bean>
+        </property>
+    </bean>
+    -->
+
+    <!--级联赋值-->
+    <bean id="emp" class="pers.dreamer07.spring5.bean.Emp">
+        <property name="name" value="Jack"></property>
+        <property name="gender" value="男"></property>
+        <property name="dept" ref="dept"></property>
+        <!--方式2：注入外部bean时，通过内部调用其属性完成赋值
+            注意 - 内部级联赋值需要对应的bean属性具有get方法
+        -->
+        <property name="dept.dname" value="OHHH"></property>
+    </bean>
+    <bean id="dept" class="pers.dreamer07.spring5.bean.Dept">
+        <!--方式1：注入外部bean的同时，通过外部bean完成对其的属性赋值-->
+        <!--        <property name="dname" value="级联赋值1"></property>-->
+    </bean>
+
+
+</beans>

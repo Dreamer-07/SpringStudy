@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd  ">
+    <!--注入集合类型的属性-->
+
+    <!--配置需要创建的对象-->
+    <bean id="stu" class="pers.dreamer07.spring5.coll_map.Stu">
+        <!--数组属性-->
+        <property name="arr">
+            <!--<list>标签和<array>标签都可以-->
+            <array>
+                <value>砸我鲁多</value>
+                <value>邪王真眼！！</value>
+            </array>
+        </property>
+        <!--list集合属性-->
+        <property name="list">
+            <!--<list>标签和<array>标签都可以-->
+            <list>
+                <value>AAA</value>
+                <value>BBB</value>
+                <value>BBB</value>
+            </list>
+        </property>
+        <!--set集合属性-->
+        <property name="set">
+            <set>
+                <value>CCC</value>
+                <value>CCC</value>
+            </set>
+        </property>
+        <!--map集合属性-->
+        <property name="map">
+            <map>
+                <!--使用entry标签，设置key和value属性-->
+                <entry key="E" value="EMT!"></entry>
+                <entry key="M" value="EMT!!"></entry>
+                <entry key="T" value="EMT!!!"></entry>
+            </map>
+        </property>
+        <!--集合元素类型为对象类型-->
+        <property name="courses">
+            <list>
+                <!--使用ref注入外部bean-->
+                <ref bean="course1"></ref>
+                <ref bean="course2"></ref>
+                <!--或使用内部bean注入-->
+                <bean id="course3" class="pers.dreamer07.spring5.coll_map.Course">
+                    <property name="name" value="SpringMVC"></property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <!--创建对应的外部bean-->
+    <bean id="course1" class="pers.dreamer07.spring5.coll_map.Course">
+        <property name="name" value="Spring5框架"></property>
+    </bean>
+    <bean id="course2" class="pers.dreamer07.spring5.coll_map.Course">
+        <property name="name" value="MyBatis框架"></property>
+    </bean>
+
+    <!--将list集合注入提取出来-->
+    <util:list id="bookList">
+        <value>SpringBoot</value>
+        <value>SpringCloud</value>
+        <value>Shiro</value>
+    </util:list>
+    <!--将外部list集合注入到属性中-->
+    <bean id="book" class="pers.dreamer07.spring5.coll_map.Book">
+        <!--使用ref引用-->
+        <property name="names" ref="bookList"></property>
+    </bean>
+</beans>
