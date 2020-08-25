@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: pers.dreamer07.testcode.BeanTest
+Test set: pers.dreamer07.spring.FactroyBeanTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.02 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 sec
