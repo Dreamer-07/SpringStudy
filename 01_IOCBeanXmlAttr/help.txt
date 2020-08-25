@@ -1,15 +1,15 @@
 Java文件和xml文件以及知识点的对应关系
 
-知识点                                  Java文件        xml文件
+知识点                                  Java文件        xml文件        测试类
 
-入门案例                                code/Main       bean1.xml
+入门案例                                code/Main       bean1.xml     MainTest
 基于xml方式注入属性(set方法)               ↓
 基于xml方式注入属性(有参构造)              ↓
-基于xml方式使用p名称空间(set方法)       code/Book       bean2.xml
-注入空值和特殊符号                      code/Book       bean3.xml
-注入外部bean                    userService + userDAO   bean3.xml
-注入内部bean                            Emp + Dept      bean3.xml
-级联赋值                                Emp + Dept      bean3.xml
-注入四种集合类型属性(基本使用)        coll_map/Stu      bean4.xml
-注入四种集合类型属性(进阶使用1)  coll_map/Stu + Course  bean4.xml
-注入四种集合类型属性(进阶使用2)       coll_map/Book     bean4.xml
+基于xml方式使用p名称空间(set方法)       code/Book       bean2.xml     BookTest
+注入空值和特殊符号                      code/Book       bean3.xml     BookOtherDataTest
+注入外部bean                    userService + userDAO   bean3.xml     BeanTest
+注入内部bean                            Emp + Dept      bean3.xml     BeanTest
+级联赋值                                Emp + Dept      bean3.xml     BeanTest
+注入四种集合类型属性(基本使用)        coll_map/Stu      bean4.xml     CollMapTest
+注入四种集合类型属性(进阶使用1)  coll_map/Stu + Course  bean4.xml     CollMapTest
+注入四种集合类型属性(进阶使用2)       coll_map/Book     bean4.xml     CollMapTest

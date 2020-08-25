@@ -12,6 +12,7 @@
         <module>../Moudule-util</module>
         <module>../01_IOCBeanXmlAttr</module>
         <module>../02_IOCBeanXml</module>
+        <module>../03_IOCBeanAnno</module>
     </modules>
 
     <properties>

@@ -1,5 +1,7 @@
 package pers.dreamer07.spring.scope;
 
+import org.springframework.context.annotation.Scope;
+
 /**
  * bean 的作用域
  * @author shkstart
