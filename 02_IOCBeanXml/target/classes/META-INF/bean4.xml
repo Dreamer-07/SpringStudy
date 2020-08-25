@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--bean 自动装配 - 使用 bean 标签的属性autowire实现
+            - byName：根据属性名完成自动装配，要求 对应的bean实例id 和 属性名相同
+            - byType：根据属性的类型完成自动装配，由class决定，且在同一个xml文件中不能配置两个相同class的两个bean
+    -->
+    <bean id="emp" class="pers.dreamer07.spring.autowire.Emp" autowire="byType"></bean>
+    <bean id="dept" class="pers.dreamer07.spring.autowire.Dept"></bean>
+    <!-- 使用byType时会报错 -->
+<!--    <bean id="dept1" class="pers.dreamer07.spring.autowire.Dept"></bean>-->
+</beans>

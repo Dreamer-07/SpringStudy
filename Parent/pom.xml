@@ -11,6 +11,7 @@
     <modules>
         <module>../Moudule-util</module>
         <module>../01_IOCBeanXmlAttr</module>
+        <module>../02_IOCBeanXml</module>
     </modules>
 
     <properties>
@@ -32,6 +33,12 @@
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
                 <scope>test</scope>
+            </dependency>
+            <!--Druid 数据库连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.1.22</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

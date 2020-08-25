@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--
+    配置对应的bean实例
+        init-method：配置初始化方法
+        destroy-method：配置销毁方法
+    -->
+    <bean id="order" class="pers.dreamer07.spring.life.Order" init-method="initMethod" destroy-method="destroyMethod">
+        <property name="oname" value="EMT!!"></property>
+    </bean>
+
+    <!--配置 bean 后置处理器
+        会对当前xml配置文件中的所有bean都起作用
+        正常引入即可，spring会将实现了BeanPostProcessor的bean对象作为后置处理器
+    -->
+    <bean id="orderProc" class="pers.dreamer07.spring.life.OrderProc"></bean>
+</beans>
