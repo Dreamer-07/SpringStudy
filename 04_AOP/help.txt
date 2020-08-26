@@ -1,0 +1,18 @@
+Java文件和xml文件以及知识点的对应关系
+.. = pers.dreamer07.spring
+(代码中不会有太多的理论知识，更多请看md笔记)
+知识点                                  Java文件                   xml文件/配置类           测试类
+
+JDK 动态代理                        ../proxy/*                        null                 ProxyTest
+AOP操作-基于注解(基本操作)          ../aopanno/User +                 bean1.xml            AopAnnoTest
+                                    ../aopanno/UserProxy
+
+AOP操作-基于注解(抽取公共切入点)    ../aopanno/UserProxy              bean1.xml            AopAnnoTest
+
+AOP操作-基于注解(增强类优先级)      ../aopanno/UserProxy +
+                                    ../aopanno/User +
+                                    ../aopanno/PersonProxy            bean1.xml            AopAnnoTest
+
+AOP操作-基于xml                     ../aopxml/*                       bean2.xml            AopXmlTest
+
+加上Aop后的完全注解开发             ../config/SpringConfig            null                 ConfigTest

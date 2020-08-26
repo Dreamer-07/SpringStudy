@@ -2,7 +2,7 @@ Java文件和xml文件以及知识点的对应关系
 .. = pers.dreamer07.spring
 知识点                                  Java文件         xml文件/配置类           测试类
 基于注解创建对象                 ../service/UserService     bean1.xml           ServiceTest
-组件扫描                                 null               bean1.xml           ServiceTest
+注解扫描                                 null               bean1.xml           ServiceTest
 基于注解完成属性注入             ../service/BookService +
 (针对于@Resource注解请看笔记)    ../dao/BookDAO +
                                  ../dao/impl/BookDAOImpl    bean1.xml           ServiceTest
