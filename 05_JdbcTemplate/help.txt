@@ -1,0 +1,6 @@
+Java文件和xml文件以及知识点的对应关系
+.. = pers.dreamer07.spring
+(代码中不会有太多的理论知识，更多请看md笔记)
+
+知识点                                  Java文件                   xml文件/配置类           测试类
+Spring JdbcTemplate的使用           pers.dreamer07.spring/*          bean1.xml             ServiceTest

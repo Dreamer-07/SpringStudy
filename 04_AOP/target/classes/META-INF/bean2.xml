@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                          http://www.springframework.org/schema/beans/spring-beans.xsd
+                          http://www.springframework.org/schema/aop
+                          http://www.springframework.org/schema/aop/spring-aop.xsd">
+    
+    <!-- 创建 bean 实例 -->
+    <bean id="book" class="pers.dreamer07.spring.aopxml.Book"></bean>
+    <bean id="bookProxy" class="pers.dreamer07.spring.aopxml.BookProxy"></bean>
+    
+    <!-- 配置aop增强 -->
+    <aop:config>
+        <!-- 配置切入点
+            id = 切入点标识
+            expression = 切入点表达式
+         -->
+        <aop:pointcut id="p" expression="execution(* pers.dreamer07.spring.aopxml.Book.buy(..))"/>
+
+
+        <!-- 配置切面
+            ref = 增强类的bean实例
+        -->
+        <aop:aspect ref="bookProxy">
+            <!-- 将增强类中'通知'应用在指定的切入点上
+                   aop:before = 标识是前置方法
+                   method = 增强类中定义的'通知'
+                   pointcut-ref = 指定的切入点
+            -->
+            <aop:before method="before" pointcut-ref="p"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
