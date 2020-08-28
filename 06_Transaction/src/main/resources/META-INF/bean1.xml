@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 开启注解扫描 -->
+    <context:component-scan base-package="pers.dreamer07.spring.service,pers.dreamer07.spring.dao,pers.dreamer07.spring.bean">
+    </context:component-scan>
+
+    <!-- 引入外部文件 -->
+    <context:property-placeholder location="./jdbc.properties"/>
+
+    <!-- 使用外部文件中的属性配置Druid连接池对象 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="username" value="${emt.username}"></property>
+        <property name="password" value="${emt.password}"></property>
+        <property name="driverClassName" value="${emt.driverClassName}"></property>
+        <property name="url" value="${emt.url}"></property>
+    </bean>
+
+    <!-- 配置JdbcTemplate对象 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!-- 通过其set方法完成数据库连接池的注入 -->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 配置事务管理器的bean实例 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注入数据库连接池(数据源) -->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 开启事务注解,配置对应的事务管理器 -->
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+</beans>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 基于xml方式的声明式事务管理 -->
+
+    <!-- 开启注解扫描 -->
+    <context:component-scan base-package="pers.dreamer07.spring.service,
+                                         pers.dreamer07.spring.dao,
+                                         pers.dreamer07.spring.bean">
+    </context:component-scan>
+
+    <!-- 引入外部文件 -->
+    <context:property-placeholder location="./jdbc.properties"/>
+
+    <!-- 使用外部文件中的属性配置Druid连接池对象 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="username" value="${emt.username}"></property>
+        <property name="password" value="${emt.password}"></property>
+        <property name="driverClassName" value="${emt.driverClassName}"></property>
+        <property name="url" value="${emt.url}"></property>
+    </bean>
+
+    <!-- 配置JdbcTemplate对象 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!-- 通过其set方法完成数据库连接池的注入 -->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 配置事务管理器的bean实例 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注入数据库连接池(数据源) -->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 配置通知 -->
+    <tx:advice id="txadvice">
+        <!-- 配置事务参数 -->
+        <tx:attributes>
+            <!--
+            tx:method = 为指定的方法添加一些事务的规则
+            name = 符合name属性值规则的方法将被添加上该事务
+                - 可以使用通配符，比如：name=transfer*
+            propagation = 事务管理的参数配置(规则)
+            -->
+            <tx:method name="transferMoney"/>
+
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 配置切入点和切面 -->
+    <aop:config>
+        <!-- 配置切入点 -->
+        <aop:pointcut id="pt" expression="execution(* pers.dreamer07.spring.service.AccountService.*(..))"/>
+
+        <!-- 配置切面 -->
+        <aop:advisor advice-ref="txadvice" pointcut-ref="pt"></aop:advisor>
+    </aop:config>
+
+</beans>
