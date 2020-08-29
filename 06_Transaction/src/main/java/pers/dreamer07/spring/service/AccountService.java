@@ -11,7 +11,7 @@ import pers.dreamer07.spring.dao.AccountDao;
  * @create 2020-08-27 19:38
  */
 @Service
-@Transactional(transactionManager = "r") //事务注解，为该类中的所有方法添加上事务
+@Transactional //事务注解，为该类中的所有方法添加上事务
 public class AccountService {
 
     @Autowired

@@ -28,16 +28,16 @@ public class ServiceTest {
         System.out.println(line);
     }
 
-    @Test //测试删除方法
-    public void testDelete(){
-        int line = userService.deleteUserById(1);
-        System.out.println(line);
-    }
-
     @Test //测试查询特殊值的方法
     public void testQueryCount(){
         int count = userService.queryCount();
         System.out.println("一共有" + count + "条记录");
+    }
+
+    @Test //测试删除方法
+    public void testDelete(){
+        int line = userService.deleteUserById(1);
+        System.out.println(line);
     }
 
     @Test //查询一个具体的User对象

@@ -21,6 +21,7 @@
     <properties>
         <spring.version>5.2.6.RELEASE</spring.version>
         <aspectJ.version>1.9.5</aspectJ.version>
+        <log4j.version>2.12.1</log4j.version>
         <argLine>-Dfile.encoding=UTF-8</argLine>
     </properties>
 
@@ -33,20 +34,24 @@
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
-
-            <!--junit 单元测试-->
+            <!--spring jdbctemplate-->
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.12</version>
-                <scope>test</scope>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
             </dependency>
-
-            <!--Druid 数据库连接池-->
+            <!-- spring orm 如果需要整合其他 ORM 框架，就需要导入该依赖 -->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>1.1.22</version>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!-- spring test -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
             </dependency>
 
             <!--Spring Aop所需要的依赖-->
@@ -75,23 +80,45 @@
                 <version>3.2.4</version>
             </dependency>
 
-            <!--Spring JdbcTemplate-->
+            <!--junit4 单元测试-->
             <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${spring.version}</version>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+                <scope>test</scope>
             </dependency>
+            <!-- junit5 单元测试 -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>5.3.2</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!--Druid 数据库连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.1.22</version>
+            </dependency>
+
             <!-- Mysql 驱动 -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>8.0.18</version>
             </dependency>
-            <!-- 如果需要整合其他 ORM 框架，就需要导入该依赖 -->
+
+            <!-- Log4j2 日志框架-->
             <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-orm</artifactId>
-                <version>${spring.version}</version>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>
             </dependency>
 
         </dependencies>

@@ -5,4 +5,9 @@ Java文件和xml文件以及知识点的对应关系
 知识点                                  Java文件                   xml文件/配置类           测试类
 Spring 数据库事务管理(注解方式)        ../*(除了config包)            bean1.xml            ServiceTest
 Spring 数据库事务管理(xml方式)         ../*(除了config包)            bean2.xml            ServiceXmlTest
-完全注解开发                           ../config/*                    none                ConfigTest
+完全注解开发                           ../config/*                    null                ConfigTest
+
+Spring5 新功能 - 整合Log4j2               null                       log4j2.xml              *(注意控制台打印)
+Spring5 新功能 - 函数式注册 bean          null                       bean1.xml            GenAppTest
+Spring5 新功能 - 整合Junit4               null                       bean1.xml            Junit4Test
+Spring5 新功能 - 整合Junit5               null                       bean1.xml            Junit5Test
